@@ -6,7 +6,10 @@ const events = (state = [], action) => {
       const id = length === 0 ? 1 : state[length - 1].id + 1;
       return [...state, { id, ...event }];
     case "DELETE_EVENTS":
-      return;
+      return state.filter((event) => {
+        return event.id !== action.id;
+      });
+
     case "DELETE_ALL_EVENTS":
       return [];
     default:
