@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const App = () => {
-  const [count, setCount] = useState(0);
+const App = (props) => {
+  const [state, setState] = useState(props);
+  const { name, price } = state;
 
-  const increment = () => {
-    setCount((previousCount) => ++previousCount);
-  };
-
-  const reset = () => setCount(0);
-
-  const third = () => {
-    setCount((pre) => (pre % 3 === 0 ? pre / 3 : pre));
-  };
+  useEffect(() => {
+    console.log("get");
+  });
 
   return (
     <>
-      <div>{count}</div>
-      <button onClick={increment}>+1</button>
-      <button onClick={reset}>reset</button>
-      <button onClick={third}>三の倍数</button>
+      <p>現在の価格は{price}</p>
+      <p>{name}です</p>
+      <button>+1</button>
+      <input
+        value={name}
+        onChange={(e) => setState({ ...state, name: e.target.value })}
+      />
     </>
   );
+};
+
+App.defaultProps = {
+  name: "和也",
+  price: 1000,
 };
 
 export default App;
