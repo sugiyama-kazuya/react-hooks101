@@ -1,0 +1,3 @@
+export const CREATE_EVENTS = "CREATE_EVENTS";
+export const DELETE_EVENTS = "DELETE_EVENTS";
+export const DELETE_ALL_EVENTS = "DELETE_ALL_EVENTS";
